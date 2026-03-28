@@ -27,7 +27,7 @@ coin-denomination-detection/
 └── README.md  
 
 ## ⚙️ Installation
-git clone https://github.com/YOUR_USERNAME/coin-denomination-detection.git  
+git clone https://github.com/SubhamSamantara/coin-denomination-detection.git  
 cd coin-denomination-detection  
 pip install -r requirements.txt  
 
@@ -35,7 +35,7 @@ pip install -r requirements.txt
 python detect.py  
 
 ## 📷 Output
-(Add screenshots here)
+
 
 ## 🔮 Future Scope
 - CNN-based classification  
