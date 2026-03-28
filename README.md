@@ -20,6 +20,7 @@ A computer vision-based system that detects and classifies coin denominations fr
 
 ## 📁 Project Structure
 coin-denomination-detection/
+
 ├── detect.py  
 ├── coins.jpg  
 ├── requirements.txt  
