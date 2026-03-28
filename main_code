@@ -1,0 +1,43 @@
+import cv2
+import numpy as np
+
+# Load image
+img = cv2.imread('coins.jpg')
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Blur to reduce noise
+blur = cv2.GaussianBlur(gray, (9, 9), 0)
+
+# Detect circles (coins)
+circles = cv2.HoughCircles(
+    blur,
+    cv2.HOUGH_GRADIENT,
+    dp=1.2,
+    minDist=50,
+    param1=50,
+    param2=30,
+    minRadius=20,
+    maxRadius=100
+)
+
+if circles is not None:
+    circles = np.round(circles[0, :]).astype("int")
+
+    for (x, y, r) in circles:
+        # Draw circle
+        cv2.circle(img, (x, y), r, (0, 255, 0), 2)
+
+        # Simple classification based on size
+        if r > 60:
+            label = "10 Rs"
+        elif r > 45:
+            label = "5 Rs"
+        else:
+            label = "1 Rs"
+
+        cv2.putText(img, label, (x - 20, y),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 0, 0), 2)
+
+cv2.imshow("Coins Detected", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
